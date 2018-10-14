@@ -111,33 +111,9 @@
                         <viewLayoutGuide key="safeArea" id="ycw-Ls-hdb"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="List Items" id="27o-OE-ZkD">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="otx-kT-lF6">
-                            <connections>
-                                <action selector="cancelAddItem:" destination="G4V-pY-BQp" id="bej-YE-Zbu"/>
-                            </connections>
-                        </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="Wnf-zZ-yo7">
-                                <connections>
-                                    <action selector="showAddDialog:" destination="G4V-pY-BQp" id="eVp-QS-h90"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="save" id="RSB-gJ-olQ">
-                                <connections>
-                                    <action selector="addItem:" destination="G4V-pY-BQp" id="Ine-tt-rmX"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="List Items" id="27o-OE-ZkD"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addButton" destination="Wnf-zZ-yo7" id="I65-OO-zof"/>
-                        <outlet property="cancelButton" destination="otx-kT-lF6" id="Zjm-2A-V1T"/>
-                        <outlet property="newItemNameField" destination="eAx-HI-OSw" id="VV9-Df-IO8"/>
-                        <outlet property="newItemWrapper" destination="5MY-qU-v1w" id="JWE-qu-1Fn"/>
-                        <outlet property="newItemWrapperHeightConstraint" destination="oJ5-hj-Qap" id="n5l-br-5dY"/>
-                        <outlet property="saveButton" destination="RSB-gJ-olQ" id="SQm-St-uyJ"/>
                         <outlet property="tableView" destination="RsK-pW-rpF" id="g88-jg-EtM"/>
                     </connections>
                 </viewController>

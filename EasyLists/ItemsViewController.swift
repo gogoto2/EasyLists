@@ -20,19 +20,10 @@ class ItemsViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    @IBOutlet var addButton: UIBarButtonItem!
-    @IBOutlet var saveButton: UIBarButtonItem!
-    @IBOutlet var cancelButton: UIBarButtonItem!
-    
-    @IBOutlet weak var newItemWrapper: UIView!
-    @IBOutlet weak var newItemWrapperHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var newItemNameField: UITextField!
-    private var newItemWrapperSavedHeight: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        hideNewItemWrapper()
     }
     
     func setupTableView() {
@@ -42,22 +33,8 @@ class ItemsViewController: UIViewController, UITableViewDelegate {
         tableView.accessibilityLabel = "\(dataSource.list.name!) Items"
     }
     
-    func hideNewItemWrapper() {
-        newItemWrapperSavedHeight = newItemWrapperHeightConstraint.constant
-        newItemWrapperHeightConstraint.constant = 0
-        navigationItem.leftBarButtonItems = []
-        navigationItem.rightBarButtonItems = [addButton]
-    }
-
-    @IBAction func showAddDialog(_ sender: Any) {
-        navigationItem.leftBarButtonItems = [cancelButton]
-        navigationItem.rightBarButtonItems = [saveButton]
-        newItemWrapperHeightConstraint.constant = newItemWrapperSavedHeight
-        newItemNameField.becomeFirstResponder()
-    }
-    
-    @IBAction func addItem(_ sender: Any) {
-        guard let name = newItemNameField.text else {
+    @IBAction func addItem(_ sender: UITextField) {
+        guard let name = sender.text else {
             return
         }
         
@@ -73,13 +50,7 @@ class ItemsViewController: UIViewController, UITableViewDelegate {
             return
         }
 
-        newItemNameField.text = ""
-        hideNewItemWrapper()
+        sender.text = ""
         tableView!.reloadData()
-    }
-    
-    @IBAction func cancelAddItem(_ sender: Any) {
-        newItemNameField.text = ""
-        hideNewItemWrapper()
     }
 }
