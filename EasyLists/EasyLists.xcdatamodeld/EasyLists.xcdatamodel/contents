@@ -5,11 +5,12 @@
         <relationship name="items" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TodoListItem" inverseName="list" inverseEntity="TodoListItem" syncable="YES"/>
     </entity>
     <entity name="TodoListItem" representedClassName=".TodoListItem" syncable="YES" codeGenerationType="category">
+        <attribute name="isCompleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="list" maxCount="1" deletionRule="Nullify" destinationEntity="TodoList" inverseName="items" inverseEntity="TodoList" syncable="YES"/>
     </entity>
     <elements>
         <element name="TodoList" positionX="-54" positionY="-9" width="128" height="75"/>
-        <element name="TodoListItem" positionX="-36" positionY="18" width="128" height="75"/>
+        <element name="TodoListItem" positionX="-36" positionY="18" width="128" height="90"/>
     </elements>
 </model>
