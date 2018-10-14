@@ -100,7 +100,7 @@ extension XCUIApplication {
         let nameField = alert.textFields["Item Name"]
         nameField.tap()
         nameField.typeText(name)
-        self.wait(for: .runningForeground, timeout: 2)
+        XCTAssertTrue(self.wait(for: .runningForeground, timeout: 2))
         alert.buttons["Add"].tap()
     }
 }
