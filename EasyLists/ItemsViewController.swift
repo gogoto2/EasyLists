@@ -1,7 +1,8 @@
 import UIKit
 
-class ItemsViewController: UITableViewController {
+class ItemsViewController: UIViewController, UITableViewDelegate {
     
+    @IBOutlet var tableView: UITableView? = nil
     private var _dataSource: ItemsDataSource? = nil
     
     var dataSource: ItemsDataSource? {
@@ -11,38 +12,74 @@ class ItemsViewController: UITableViewController {
         
         set {
             _dataSource = newValue
-            tableView.dataSource = newValue
+            setupTableView()
             
             if let newValue = newValue {
                 navigationItem.title = "\(newValue.list.name!)"
-                tableView.accessibilityLabel = "\(newValue.list.name!) Items"
             }
         }
     }
-        
+    
+    @IBOutlet var addButton: UIBarButtonItem!
+    @IBOutlet var saveButton: UIBarButtonItem!
+    @IBOutlet var cancelButton: UIBarButtonItem!
+    
+    @IBOutlet weak var newItemWrapper: UIView!
+    @IBOutlet weak var newItemWrapperHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var newItemNameField: UITextField!
+    private var newItemWrapperSavedHeight: CGFloat = 0
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTableView()
+        hideNewItemWrapper()
+    }
+    
+    func setupTableView() {
+        guard let tableView = tableView else {return}
+        guard let dataSource = dataSource else {return}
+        tableView.dataSource = dataSource
+        tableView.accessibilityLabel = "\(dataSource.list.name!) Items"
+    }
+    
+    func hideNewItemWrapper() {
+        newItemWrapperSavedHeight = newItemWrapperHeightConstraint.constant
+        newItemWrapperHeightConstraint.constant = 0
+        navigationItem.leftBarButtonItems = []
+        navigationItem.rightBarButtonItems = [addButton]
+    }
+
     @IBAction func showAddDialog(_ sender: Any) {
-        let alert = UIAlertController(title: "New Item",
-                                      message: nil,
-                                      preferredStyle: .alert)
-        alert.addTextField()
-        let nameField = alert.textFields!.first!
-        nameField.autocapitalizationType = .sentences
-        nameField.autocorrectionType = .yes
-        nameField.placeholder = "Item Name"
-        let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
-            do {
-                try self.dataSource!.add(name: nameField.text!)
-            } catch let error as NSError {
-                // TODO: How to handle this?
-                print("Error saving item: \(error)")
-            }
-
-            self.tableView.reloadData()
-        }
-        alert.addAction(addAction)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        
-        present(alert, animated: true)
+        navigationItem.leftBarButtonItems = [cancelButton]
+        navigationItem.rightBarButtonItems = [saveButton]
+        newItemWrapperHeightConstraint.constant = newItemWrapperSavedHeight
+        newItemNameField.becomeFirstResponder()
     }
+    
+    @IBAction func addItem(_ sender: Any) {
+        guard let name = newItemNameField.text else {
+            return
+        }
+        
+        if name.count == 0 {
+            return
+        }
+        
+        do {
+            try dataSource!.add(name: name)
+        } catch let error as NSError {
+            // TODO: How to handle this?
+            print("Error saving item: \(error)")
+            return
+        }
 
+        newItemNameField.text = ""
+        hideNewItemWrapper()
+        tableView!.reloadData()
+    }
+    
+    @IBAction func cancelAddItem(_ sender: Any) {
+        newItemNameField.text = ""
+        hideNewItemWrapper()
+    }
 }
