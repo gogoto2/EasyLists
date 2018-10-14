@@ -38,12 +38,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             } else {
-                self.addList(name: "List B", container: container)
-                self.addList(name: "List A", container: container)
+                if CommandLine.arguments.contains("--uitesting") {
+                    self.resetStateForTesting(container: container)
+                }
             }
         })
         return container
     }()
+    
+    func resetStateForTesting(container: NSPersistentContainer) {
+        let psc = container.persistentStoreCoordinator
+        let desc = container.persistentStoreDescriptions[0]
+
+        do {
+            try psc.destroyPersistentStore(at: desc.url!, ofType: NSSQLiteStoreType, options: desc.options)
+            try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: desc.configuration, at: desc.url, options: desc.options)
+        } catch {
+            print("Failed to reset state: \(error)")
+            print("This will most likely cause tests to fail.")
+        }
+        
+        addList(name: "List B", container: container)
+        addList(name: "List A", container: container)
+    }
     
     func addList(name: String, container: NSPersistentContainer) {
         let entity = NSEntityDescription.entity(forEntityName: "TodoList",

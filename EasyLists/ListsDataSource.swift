@@ -21,6 +21,22 @@ class ListsDataSource: NSObject, UITableViewDataSource {
         }
     }
     
+    func add(name: String) {
+        let entity = NSEntityDescription.entity(forEntityName: "TodoList",
+                                                in: persistentContainer.viewContext)!
+        let list = TodoList(entity: entity, insertInto: persistentContainer.viewContext)
+        list.name = name
+        
+        do {
+            try persistentContainer.viewContext.save()
+            lists.append(list)
+            lists.sort(by: {$0.name < $1.name})
+        } catch let error as NSError {
+            // TODO: How to handle this?
+            print("Error fetching data: \(error)")
+        }
+    }
+    
     // MARK: - UITableViewDataSource methods
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -34,7 +34,13 @@
                             <outlet property="delegate" destination="fVS-9B-dNW" id="jxT-xg-AXt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Easy Lists" id="fP1-S1-28h"/>
+                    <navigationItem key="navigationItem" title="Easy Lists" id="fP1-S1-28h">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="R6y-W2-J7m">
+                            <connections>
+                                <action selector="showAddDialog:" destination="fVS-9B-dNW" id="Rm1-LR-uO6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PP6-20-cut" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

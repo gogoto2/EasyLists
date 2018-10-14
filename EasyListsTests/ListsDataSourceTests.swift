@@ -45,5 +45,13 @@ class ListsDataSourceTests: XCTestCase {
         subject.fetch()
         XCTAssertEqual(namesInTable(), ["bar", "foo"])
     }
-    
+ 
+    func testAddsListsInAlphaOrder() {
+        addList(name: "b")
+        subject.fetch()
+        subject.add(name: "c")
+        subject.add(name: "a")
+        XCTAssertEqual(namesInTable(), ["a", "b", "c"])
+    }
+
 }
