@@ -7,6 +7,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let navController = window?.rootViewController as! UINavigationController
+        let listsController = navController.viewControllers[0] as! ListsViewController
+        listsController.dataSource = ListsDataSource(persistentContainer: self.persistentContainer)
+
         return true
     }
 
@@ -32,10 +37,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  Check the error message to determine what the actual problem was.
                  */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
+            } else {
+                self.addList(name: "List B", container: container)
+                self.addList(name: "List A", container: container)
             }
         })
         return container
     }()
+    
+    func addList(name: String, container: NSPersistentContainer) {
+        let entity = NSEntityDescription.entity(forEntityName: "TodoList",
+                                                in: container.viewContext)!
+        let list = TodoList(entity: entity, insertInto: container.viewContext)
+        list.name = name
+    }
+
 
     // MARK: - Core Data Saving support
 

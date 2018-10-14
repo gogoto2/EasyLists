@@ -8,13 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		AA387FF02172BDDC00EF9602 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA387FEF2172BDDC00EF9602 /* AppDelegate.swift */; };
-		AA387FF22172BDDC00EF9602 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA387FF12172BDDC00EF9602 /* ViewController.swift */; };
 		AA387FF52172BDDC00EF9602 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA387FF32172BDDC00EF9602 /* Main.storyboard */; };
 		AA387FF82172BDDC00EF9602 /* EasyLists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA387FF62172BDDC00EF9602 /* EasyLists.xcdatamodeld */; };
 		AA387FFA2172BDDC00EF9602 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA387FF92172BDDC00EF9602 /* Assets.xcassets */; };
 		AA387FFD2172BDDC00EF9602 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA387FFB2172BDDC00EF9602 /* LaunchScreen.storyboard */; };
-		AA3880082172BDDC00EF9602 /* EasyListsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880072172BDDC00EF9602 /* EasyListsTests.swift */; };
 		AA3880132172BDDC00EF9602 /* EasyListsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880122172BDDC00EF9602 /* EasyListsUITests.swift */; };
+		AA3880212172CBC400EF9602 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880202172CBC400EF9602 /* ListsViewController.swift */; };
+		AA3880232172CC6800EF9602 /* ListsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880222172CC6800EF9602 /* ListsDataSource.swift */; };
+		AA3880252172CD2E00EF9602 /* ListsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880242172CD2E00EF9602 /* ListsDataSourceTests.swift */; };
+		AA3880272172CDB800EF9602 /* StubTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880262172CDB800EF9602 /* StubTableView.swift */; };
+		AA3880282172CDEE00EF9602 /* ListsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880222172CC6800EF9602 /* ListsDataSource.swift */; };
+		AA38802A2172CF1000EF9602 /* EasyLists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA387FF62172BDDC00EF9602 /* EasyLists.xcdatamodeld */; };
+		AA38802C2172CF2000EF9602 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38802B2172CF2000EF9602 /* TodoList.swift */; };
+		AA38802D2172CF2000EF9602 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38802B2172CF2000EF9602 /* TodoList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,18 +43,21 @@
 /* Begin PBXFileReference section */
 		AA387FEC2172BDDC00EF9602 /* EasyLists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA387FEF2172BDDC00EF9602 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AA387FF12172BDDC00EF9602 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AA387FF42172BDDC00EF9602 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AA387FF72172BDDC00EF9602 /* EasyLists.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyLists.xcdatamodel; sourceTree = "<group>"; };
 		AA387FF92172BDDC00EF9602 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA387FFC2172BDDC00EF9602 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA387FFE2172BDDC00EF9602 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA3880032172BDDC00EF9602 /* EasyListsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyListsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA3880072172BDDC00EF9602 /* EasyListsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyListsTests.swift; sourceTree = "<group>"; };
 		AA3880092172BDDC00EF9602 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA38800E2172BDDC00EF9602 /* EasyListsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyListsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3880122172BDDC00EF9602 /* EasyListsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyListsUITests.swift; sourceTree = "<group>"; };
 		AA3880142172BDDC00EF9602 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA3880202172CBC400EF9602 /* ListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
+		AA3880222172CC6800EF9602 /* ListsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsDataSource.swift; sourceTree = "<group>"; };
+		AA3880242172CD2E00EF9602 /* ListsDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsDataSourceTests.swift; sourceTree = "<group>"; };
+		AA3880262172CDB800EF9602 /* StubTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubTableView.swift; sourceTree = "<group>"; };
+		AA38802B2172CF2000EF9602 /* TodoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +109,14 @@
 			isa = PBXGroup;
 			children = (
 				AA387FEF2172BDDC00EF9602 /* AppDelegate.swift */,
-				AA387FF12172BDDC00EF9602 /* ViewController.swift */,
 				AA387FF32172BDDC00EF9602 /* Main.storyboard */,
 				AA387FF92172BDDC00EF9602 /* Assets.xcassets */,
 				AA387FFB2172BDDC00EF9602 /* LaunchScreen.storyboard */,
 				AA387FFE2172BDDC00EF9602 /* Info.plist */,
 				AA387FF62172BDDC00EF9602 /* EasyLists.xcdatamodeld */,
+				AA3880202172CBC400EF9602 /* ListsViewController.swift */,
+				AA3880222172CC6800EF9602 /* ListsDataSource.swift */,
+				AA38802B2172CF2000EF9602 /* TodoList.swift */,
 			);
 			path = EasyLists;
 			sourceTree = "<group>";
@@ -113,8 +124,9 @@
 		AA3880062172BDDC00EF9602 /* EasyListsTests */ = {
 			isa = PBXGroup;
 			children = (
-				AA3880072172BDDC00EF9602 /* EasyListsTests.swift */,
 				AA3880092172BDDC00EF9602 /* Info.plist */,
+				AA3880242172CD2E00EF9602 /* ListsDataSourceTests.swift */,
+				AA3880262172CDB800EF9602 /* StubTableView.swift */,
 			);
 			path = EasyListsTests;
 			sourceTree = "<group>";
@@ -260,8 +272,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA387FF82172BDDC00EF9602 /* EasyLists.xcdatamodeld in Sources */,
-				AA387FF22172BDDC00EF9602 /* ViewController.swift in Sources */,
+				AA3880212172CBC400EF9602 /* ListsViewController.swift in Sources */,
+				AA38802C2172CF2000EF9602 /* TodoList.swift in Sources */,
 				AA387FF02172BDDC00EF9602 /* AppDelegate.swift in Sources */,
+				AA3880232172CC6800EF9602 /* ListsDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +283,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA3880082172BDDC00EF9602 /* EasyListsTests.swift in Sources */,
+				AA3880252172CD2E00EF9602 /* ListsDataSourceTests.swift in Sources */,
+				AA3880282172CDEE00EF9602 /* ListsDataSource.swift in Sources */,
+				AA38802D2172CF2000EF9602 /* TodoList.swift in Sources */,
+				AA38802A2172CF1000EF9602 /* EasyLists.xcdatamodeld in Sources */,
+				AA3880272172CDB800EF9602 /* StubTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
