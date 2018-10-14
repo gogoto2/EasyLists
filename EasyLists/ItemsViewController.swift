@@ -34,7 +34,7 @@ class ItemsViewController: UITableViewController {
                 try self.dataSource!.add(name: nameField.text!)
             } catch let error as NSError {
                 // TODO: How to handle this?
-                print("Error fetching data: \(error)")
+                print("Error saving item: \(error)")
             }
 
             self.tableView.reloadData()

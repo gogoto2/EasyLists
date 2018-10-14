@@ -17,7 +17,12 @@ class ListsViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        _dataSource!.fetch()
+        do {
+            try _dataSource!.fetch()
+        } catch {
+            // TODO: How to handle this?
+            print("Error fetching data: \(error)")
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,7 +42,13 @@ class ListsViewController: UITableViewController {
         nameField.autocorrectionType = .yes
         nameField.placeholder = "List Name"
         let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
-            self.dataSource!.add(name: nameField.text!)
+            do {
+                try self.dataSource!.add(name: nameField.text!)
+            } catch {
+                // TODO: How to handle this?
+                print("Error saving list: \(error)")
+
+            }
             self.tableView.reloadData()
         }
         alert.addAction(addAction)

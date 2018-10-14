@@ -39,18 +39,18 @@ class ListsDataSourceTests: XCTestCase {
         }
     }
     
-    func testProvidesListsInAlphaOrder() {
+    func testProvidesListsInAlphaOrder() throws {
         addList(name: "foo")
         addList(name: "bar")
-        subject.fetch()
+        try subject.fetch()
         XCTAssertEqual(namesInTable(), ["bar", "foo"])
     }
  
-    func testAddsListsInAlphaOrder() {
+    func testAddsListsInAlphaOrder() throws {
         addList(name: "b")
-        subject.fetch()
-        subject.add(name: "c")
-        subject.add(name: "a")
+        try subject.fetch()
+        try subject.add(name: "c")
+        try subject.add(name: "a")
         XCTAssertEqual(namesInTable(), ["a", "b", "c"])
     }
 

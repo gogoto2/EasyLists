@@ -94,7 +94,6 @@ extension XCUIApplication {
     }
     
     func addItem(name: String) {
-        print(self.debugDescription)
         self.buttons["Add"].tap()
         let alert = self.alerts["New Item"]
         XCTAssertTrue(alert.exists)
