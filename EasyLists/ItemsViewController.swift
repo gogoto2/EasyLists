@@ -20,7 +20,6 @@ class ItemsViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -53,4 +52,26 @@ class ItemsViewController: UIViewController, UITableViewDelegate {
         sender.text = ""
         tableView!.reloadData()
     }
+    
+    func deleteItemAtIndex(_ i: Int) {
+        do {
+            try dataSource!.deleteItemAtIndex(i)
+            tableView?.reloadData()
+        } catch {
+            print("Error deleting item: \(error)")
+        }
+    }
+    
+    // MARK: - UITableViewDelegate methods
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+         let title = NSLocalizedString("Delete", comment: "Delete action")
+         let action = UITableViewRowAction(style: .destructive,
+                                           title: title) { (action, indexPath) in
+                                            self.deleteItemAtIndex(indexPath.row)
+         }
+        
+         return [action]
+     }
 }

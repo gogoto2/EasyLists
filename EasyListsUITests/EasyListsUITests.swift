@@ -37,10 +37,16 @@ class EasyListsUITests: XCTestCase {
         XCTAssertTrue(itemsTable.exists)
         app.addItem(name: "Item 1")
         app.addItem(name: "Item 2")
+        app.addItem(name: "Item 3")
         var item1Cell = itemsTable.cells.element(boundBy: 0)
         XCTAssertTrue(item1Cell.descendants(matching: .staticText)["Item 1"].exists)
         item1Cell.switches["completed"].tap()
         XCTAssertTrue(itemsTable.cells.element(boundBy: 1).descendants(matching: .staticText)["Item 2"].exists)
+        let item3Cell = itemsTable.cells.element(boundBy: 2)
+        XCTAssertTrue(item3Cell.descendants(matching: .staticText)["Item 3"].exists)
+        item3Cell.swipeLeft()
+        item3Cell.buttons["Delete"].tap()
+        XCTAssertEqual(2, itemsTable.cells.count)
 
         // Verify that the additions were persisted
         app = launchApp(resetData: false)
@@ -53,6 +59,7 @@ class EasyListsUITests: XCTestCase {
 
         itemsTable = app.tables["List A Items"]
         XCTAssertTrue(itemsTable.exists)
+        XCTAssertEqual(2, itemsTable.cells.count)
         XCTAssertTrue(itemsTable.cells.element(boundBy: 0).descendants(matching: .staticText)["Item 2"].exists)
         item1Cell = itemsTable.cells.element(boundBy: 1)
         XCTAssertTrue(item1Cell.descendants(matching: .staticText)["Item 1"].exists)

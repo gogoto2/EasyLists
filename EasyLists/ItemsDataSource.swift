@@ -39,6 +39,18 @@ class ItemsDataSource: NSObject, UITableViewDataSource, ItemCellDelegate {
             return itemsInitiallyCompleted[i - itemsInitiallyNotCompleted.count]
         }
     }
+    
+    func deleteItemAtIndex(_ i: Int) throws {
+        let item: TodoListItem
+        if i < itemsInitiallyNotCompleted.count {
+            item = itemsInitiallyNotCompleted.remove(at: i)
+        } else {
+            item = itemsInitiallyCompleted.remove(at: i - itemsInitiallyNotCompleted.count)
+        }
+        
+        viewContext.delete(item)
+        try viewContext.save()
+    }
         
     // MARK: - UITableViewDataSource methods
     
