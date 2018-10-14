@@ -58,28 +58,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5MY-qU-v1w" userLabel="New item wrapper">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Item Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eAx-HI-OSw">
                                 <rect key="frame" x="0.0" y="64" width="375" height="30"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Item Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eAx-HI-OSw">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="addItem:" destination="G4V-pY-BQp" eventType="primaryActionTriggered" id="uII-70-HOB"/>
-                                        </connections>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="eAx-HI-OSw" secondAttribute="trailing" id="TIJ-MN-s4a"/>
-                                    <constraint firstAttribute="height" constant="30" id="oJ5-hj-Qap"/>
-                                    <constraint firstItem="eAx-HI-OSw" firstAttribute="top" secondItem="5MY-qU-v1w" secondAttribute="top" id="tkB-jS-ogf"/>
-                                    <constraint firstItem="eAx-HI-OSw" firstAttribute="leading" secondItem="5MY-qU-v1w" secondAttribute="leading" id="xWe-wy-t0j"/>
-                                    <constraint firstAttribute="bottom" secondItem="eAx-HI-OSw" secondAttribute="bottom" id="yUV-ec-t4b"/>
-                                </constraints>
-                            </view>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="addItem:" destination="G4V-pY-BQp" eventType="primaryActionTriggered" id="uII-70-HOB"/>
+                                </connections>
+                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RsK-pW-rpF">
                                 <rect key="frame" x="0.0" y="94" width="375" height="573"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -101,12 +88,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="RsK-pW-rpF" secondAttribute="bottom" id="3J8-bi-lR3"/>
-                            <constraint firstItem="5MY-qU-v1w" firstAttribute="top" secondItem="ycw-Ls-hdb" secondAttribute="top" id="FGT-XV-Zrw"/>
+                            <constraint firstItem="eAx-HI-OSw" firstAttribute="trailing" secondItem="ycw-Ls-hdb" secondAttribute="trailing" id="67h-JH-Y2g"/>
+                            <constraint firstItem="RsK-pW-rpF" firstAttribute="top" secondItem="eAx-HI-OSw" secondAttribute="bottom" id="6e3-XF-4qP"/>
                             <constraint firstItem="RsK-pW-rpF" firstAttribute="leading" secondItem="ycw-Ls-hdb" secondAttribute="leading" id="GhO-sQ-tQh"/>
                             <constraint firstItem="RsK-pW-rpF" firstAttribute="trailing" secondItem="ycw-Ls-hdb" secondAttribute="trailing" id="H3o-WL-cmf"/>
-                            <constraint firstItem="ycw-Ls-hdb" firstAttribute="trailing" secondItem="5MY-qU-v1w" secondAttribute="trailing" id="a99-Y2-wQx"/>
-                            <constraint firstItem="RsK-pW-rpF" firstAttribute="top" secondItem="5MY-qU-v1w" secondAttribute="bottom" id="c0E-Rg-21K"/>
-                            <constraint firstItem="5MY-qU-v1w" firstAttribute="leading" secondItem="ycw-Ls-hdb" secondAttribute="leading" id="ky3-P6-WhK"/>
+                            <constraint firstItem="eAx-HI-OSw" firstAttribute="top" secondItem="ycw-Ls-hdb" secondAttribute="top" id="c2a-Sa-8zc"/>
+                            <constraint firstItem="eAx-HI-OSw" firstAttribute="leading" secondItem="ycw-Ls-hdb" secondAttribute="leading" id="ogQ-Xb-VpZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ycw-Ls-hdb"/>
                     </view>
