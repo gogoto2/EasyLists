@@ -20,10 +20,12 @@ class ItemsDataSourceTests: XCTestCase {
         }
     }
 
-    func testProvidesItems() throws {
-        let list = try makeList(items: ["Item 1", "Item 2"])
+    func testSortsItemsByCompletedThenInsertionOrder() throws {
+        let list = try makeList(items: ["Item 1", "Item 2", "Item 3", "Item 4"])
+        (list.items![0] as! TodoListItem).isCompleted = true
+        (list.items![2] as! TodoListItem).isCompleted = true
         let subject = ItemsDataSource(list: list, persistentContainer: container)
-        XCTAssertEqual(["Item 1", "Item 2"], namesInTable(subject: subject))
+        XCTAssertEqual(["Item 2", "Item 4", "Item 1", "Item 3"], namesInTable(subject: subject))
     }
     
     func testAddsItemsInOrder() throws {

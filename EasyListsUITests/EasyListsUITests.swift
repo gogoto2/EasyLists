@@ -53,10 +53,10 @@ class EasyListsUITests: XCTestCase {
 
         itemsTable = app.tables["List A Items"]
         XCTAssertTrue(itemsTable.exists)
-        item1Cell = itemsTable.cells.element(boundBy: 0)
+        XCTAssertTrue(itemsTable.cells.element(boundBy: 0).descendants(matching: .staticText)["Item 2"].exists)
+        item1Cell = itemsTable.cells.element(boundBy: 1)
         XCTAssertTrue(item1Cell.descendants(matching: .staticText)["Item 1"].exists)
         XCTAssertEqual("1", item1Cell.switches["completed"].value as? String)
-        XCTAssertTrue(itemsTable.cells.element(boundBy: 1).descendants(matching: .staticText)["Item 2"].exists)
     }
 }
 
