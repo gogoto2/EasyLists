@@ -30,7 +30,7 @@ class ListsDataSource: NSObject, UITableViewDataSource {
         do {
             try persistentContainer.viewContext.save()
             lists.append(list)
-            lists.sort(by: {$0.name < $1.name})
+            lists.sort(by: {$0.name! < $1.name!})
         } catch let error as NSError {
             // TODO: How to handle this?
             print("Error fetching data: \(error)")
@@ -48,7 +48,8 @@ class ListsDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "normal cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "normal cell") as! ListCell
+        cell.list = lists[indexPath.row]
         cell.textLabel!.text = lists[indexPath.row].name
         return cell
     }

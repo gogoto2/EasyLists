@@ -35,32 +35,73 @@ class EasyListsUITests: XCTestCase {
         XCTAssertTrue(table.cells.element(boundBy: 1).descendants(matching: .staticText)["List B"].exists)
     }
     
-    func testPersistsAddedLists() {
+    func testCreatesItems() {
+        let app = launchApp()
+        app.addList(name: "List A")
+        app.tables["Lists"].cells.element(boundBy: 0).tap()
+        
+        let itemTable = app.tables["List A Items"]
+        XCTAssertTrue(itemTable.exists)
+        app.addItem(name: "Item 1")
+        app.addItem(name: "Item 2")
+        XCTAssertEqual(2, itemTable.cells.count)
+        XCTAssertTrue(itemTable.cells.element(boundBy: 0).descendants(matching: .staticText)["Item 1"].exists)
+        XCTAssertTrue(itemTable.cells.element(boundBy: 1).descendants(matching: .staticText)["Item 2"].exists)
+    }
+    
+    func testPersistsListsAndItems() {
         var app = launchApp(resetData: true)
         app.addList(name: "List C")
         
-        var table = app.tables["Lists"]
-        XCTAssertTrue(table.exists)
-        XCTAssertEqual(1, table.cells.count)
-        XCTAssertTrue(table.cells.element(boundBy: 0).descendants(matching: .staticText)["List C"].exists)
+        var listsTable = app.tables["Lists"]
+        XCTAssertTrue(listsTable.exists)
+        XCTAssertEqual(1, listsTable.cells.count)
+        var listCell = listsTable.cells.element(boundBy: 0)
+        XCTAssertTrue(listCell.descendants(matching: .staticText)["List C"].exists)
+        listCell.tap()
         
-        // Verify that the addition was persisted
+        var itemsTable = app.tables["List C Items"]
+        XCTAssertTrue(itemsTable.exists)
+        app.addItem(name: "Item 1")
+        var itemCell = itemsTable.cells.element(boundBy: 0)
+        XCTAssertTrue(itemCell.descendants(matching: .staticText)["Item 1"].exists)
+        
+        // Verify that the additions were persisted
         app = launchApp(resetData: false)
-        table = app.tables["Lists"]
-        XCTAssertTrue(table.exists)
-        XCTAssertEqual(1, table.cells.count)
-        XCTAssertTrue(table.cells.element(boundBy: 0).descendants(matching: .staticText)["List C"].exists)
+        listsTable = app.tables["Lists"]
+        XCTAssertTrue(listsTable.exists)
+        XCTAssertEqual(1, listsTable.cells.count)
+        listCell = listsTable.cells.element(boundBy: 0)
+        XCTAssertTrue(listCell.descendants(matching: .staticText)["List C"].exists)
+        listCell.tap()
+        
+        itemsTable = app.tables["List C Items"]
+        XCTAssertTrue(itemsTable.exists)
+        itemCell = itemsTable.cells.element(boundBy: 0)
+        XCTAssertTrue(itemCell.descendants(matching: .staticText)["Item 1"].exists)
     }
 }
 
 extension XCUIApplication {
     func addList(name: String) {
         self.buttons["Add"].tap()
-        let alert = self.alerts["Add List"]
+        let alert = self.alerts["New List"]
         XCTAssertTrue(alert.exists)
         let nameField = alert.textFields["List Name"]
         nameField.tap()
         nameField.typeText(name)
+        alert.buttons["Add"].tap()
+    }
+    
+    func addItem(name: String) {
+        print(self.debugDescription)
+        self.buttons["Add"].tap()
+        let alert = self.alerts["New Item"]
+        XCTAssertTrue(alert.exists)
+        let nameField = alert.textFields["Item Name"]
+        nameField.tap()
+        nameField.typeText(name)
+        self.wait(for: .runningForeground, timeout: 2)
         alert.buttons["Add"].tap()
     }
 }

@@ -16,11 +16,22 @@
 		AA3880212172CBC400EF9602 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880202172CBC400EF9602 /* ListsViewController.swift */; };
 		AA3880232172CC6800EF9602 /* ListsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880222172CC6800EF9602 /* ListsDataSource.swift */; };
 		AA3880252172CD2E00EF9602 /* ListsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880242172CD2E00EF9602 /* ListsDataSourceTests.swift */; };
-		AA3880272172CDB800EF9602 /* StubTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880262172CDB800EF9602 /* StubTableView.swift */; };
+		AA3880272172CDB800EF9602 /* StubListsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880262172CDB800EF9602 /* StubListsTableView.swift */; };
 		AA3880282172CDEE00EF9602 /* ListsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880222172CC6800EF9602 /* ListsDataSource.swift */; };
 		AA38802A2172CF1000EF9602 /* EasyLists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA387FF62172BDDC00EF9602 /* EasyLists.xcdatamodeld */; };
 		AA38802C2172CF2000EF9602 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38802B2172CF2000EF9602 /* TodoList.swift */; };
 		AA38802D2172CF2000EF9602 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38802B2172CF2000EF9602 /* TodoList.swift */; };
+		AA38802F2172F99800EF9602 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38802E2172F99800EF9602 /* ItemsViewController.swift */; };
+		AA3880302172F99800EF9602 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38802E2172F99800EF9602 /* ItemsViewController.swift */; };
+		AA3880322172F9C300EF9602 /* ItemsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880312172F9C300EF9602 /* ItemsDataSource.swift */; };
+		AA3880332172F9C300EF9602 /* ItemsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880312172F9C300EF9602 /* ItemsDataSource.swift */; };
+		AA3880352172FFDB00EF9602 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880342172FFDB00EF9602 /* ListCell.swift */; };
+		AA3880362172FFDB00EF9602 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880342172FFDB00EF9602 /* ListCell.swift */; };
+		AA3880382173085100EF9602 /* ItemsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3880372173085100EF9602 /* ItemsDataSourceTests.swift */; };
+		AA38803A21730E9900EF9602 /* TodoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38803921730E9900EF9602 /* TodoListItem.swift */; };
+		AA38803B21730E9900EF9602 /* TodoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38803921730E9900EF9602 /* TodoListItem.swift */; };
+		AA38803D2173128200EF9602 /* StubItemsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38803C2173128200EF9602 /* StubItemsTableView.swift */; };
+		AA38803E2173128200EF9602 /* StubItemsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA38803C2173128200EF9602 /* StubItemsTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +67,14 @@
 		AA3880202172CBC400EF9602 /* ListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
 		AA3880222172CC6800EF9602 /* ListsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsDataSource.swift; sourceTree = "<group>"; };
 		AA3880242172CD2E00EF9602 /* ListsDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsDataSourceTests.swift; sourceTree = "<group>"; };
-		AA3880262172CDB800EF9602 /* StubTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubTableView.swift; sourceTree = "<group>"; };
+		AA3880262172CDB800EF9602 /* StubListsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubListsTableView.swift; sourceTree = "<group>"; };
 		AA38802B2172CF2000EF9602 /* TodoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
+		AA38802E2172F99800EF9602 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
+		AA3880312172F9C300EF9602 /* ItemsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsDataSource.swift; sourceTree = "<group>"; };
+		AA3880342172FFDB00EF9602 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		AA3880372173085100EF9602 /* ItemsDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsDataSourceTests.swift; sourceTree = "<group>"; };
+		AA38803921730E9900EF9602 /* TodoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListItem.swift; sourceTree = "<group>"; };
+		AA38803C2173128200EF9602 /* StubItemsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubItemsTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +133,11 @@
 				AA387FF62172BDDC00EF9602 /* EasyLists.xcdatamodeld */,
 				AA3880202172CBC400EF9602 /* ListsViewController.swift */,
 				AA3880222172CC6800EF9602 /* ListsDataSource.swift */,
+				AA3880342172FFDB00EF9602 /* ListCell.swift */,
 				AA38802B2172CF2000EF9602 /* TodoList.swift */,
+				AA38803921730E9900EF9602 /* TodoListItem.swift */,
+				AA38802E2172F99800EF9602 /* ItemsViewController.swift */,
+				AA3880312172F9C300EF9602 /* ItemsDataSource.swift */,
 			);
 			path = EasyLists;
 			sourceTree = "<group>";
@@ -126,7 +147,9 @@
 			children = (
 				AA3880092172BDDC00EF9602 /* Info.plist */,
 				AA3880242172CD2E00EF9602 /* ListsDataSourceTests.swift */,
-				AA3880262172CDB800EF9602 /* StubTableView.swift */,
+				AA3880262172CDB800EF9602 /* StubListsTableView.swift */,
+				AA3880372173085100EF9602 /* ItemsDataSourceTests.swift */,
+				AA38803C2173128200EF9602 /* StubItemsTableView.swift */,
 			);
 			path = EasyListsTests;
 			sourceTree = "<group>";
@@ -272,9 +295,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA387FF82172BDDC00EF9602 /* EasyLists.xcdatamodeld in Sources */,
+				AA38802F2172F99800EF9602 /* ItemsViewController.swift in Sources */,
 				AA3880212172CBC400EF9602 /* ListsViewController.swift in Sources */,
+				AA38803A21730E9900EF9602 /* TodoListItem.swift in Sources */,
 				AA38802C2172CF2000EF9602 /* TodoList.swift in Sources */,
 				AA387FF02172BDDC00EF9602 /* AppDelegate.swift in Sources */,
+				AA3880352172FFDB00EF9602 /* ListCell.swift in Sources */,
+				AA3880322172F9C300EF9602 /* ItemsDataSource.swift in Sources */,
+				AA38803D2173128200EF9602 /* StubItemsTableView.swift in Sources */,
 				AA3880232172CC6800EF9602 /* ListsDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,11 +311,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA38803E2173128200EF9602 /* StubItemsTableView.swift in Sources */,
+				AA38803B21730E9900EF9602 /* TodoListItem.swift in Sources */,
 				AA3880252172CD2E00EF9602 /* ListsDataSourceTests.swift in Sources */,
+				AA3880302172F99800EF9602 /* ItemsViewController.swift in Sources */,
 				AA3880282172CDEE00EF9602 /* ListsDataSource.swift in Sources */,
 				AA38802D2172CF2000EF9602 /* TodoList.swift in Sources */,
 				AA38802A2172CF1000EF9602 /* EasyLists.xcdatamodeld in Sources */,
-				AA3880272172CDB800EF9602 /* StubTableView.swift in Sources */,
+				AA3880382173085100EF9602 /* ItemsDataSourceTests.swift in Sources */,
+				AA3880362172FFDB00EF9602 /* ListCell.swift in Sources */,
+				AA3880332172F9C300EF9602 /* ItemsDataSource.swift in Sources */,
+				AA3880272172CDB800EF9602 /* StubListsTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

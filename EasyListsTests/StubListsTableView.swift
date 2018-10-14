@@ -1,9 +1,9 @@
 import UIKit
 
-class StubTableView: UITableView {
+class StubListsTableView: UITableView {
     
     override func dequeueReusableCell(withIdentifier identifier: String) -> UITableViewCell? {
-        return UITableViewCell(style: .default, reuseIdentifier: identifier)
+        return ListCell()
     }
     
 }

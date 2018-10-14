@@ -1,10 +1,9 @@
 import XCTest
 import CoreData
 
-class ListsDataSourceTests: XCTestCase {
+class ItemsDataSourceTests: XCTestCase {
     
     var container: NSPersistentContainer! = nil
-    var subject: ListsDataSource! = nil
     
     override func setUp() {
         super.setUp()
@@ -19,39 +18,43 @@ class ListsDataSourceTests: XCTestCase {
             precondition(description.type == NSInMemoryStoreType)
             precondition(error == nil)
         }
-        
-        subject = ListsDataSource(persistentContainer: container)
+    }
+
+    func testProvidesItems() throws {
+        let list = try makeList(items: ["Item 1", "Item 2"])
+        let subject = ItemsDataSource(list: list, persistentContainer: container)
+        XCTAssertEqual(["Item 1", "Item 2"], namesInTable(subject: subject))
     }
     
-    func addList(name: String) {
+    func testAddsItemsInOrder() throws {
+        let list = try makeList(items: ["Item 2"])
+        let subject = ItemsDataSource(list: list, persistentContainer: container)
+        try subject.add(name: "Item 1")
+        XCTAssertEqual(["Item 2", "Item 1"], namesInTable(subject: subject))
+    }
+    
+    func makeList(items: [String]) throws -> TodoList {
         let entity = NSEntityDescription.entity(forEntityName: "TodoList",
                                                 in: container.viewContext)!
         let list = TodoList(entity: entity, insertInto: container.viewContext)
-        list.name = name
+        list.name = ""
+        
+        for name in items {
+            let item = TodoListItem(context: container.viewContext)
+            item.name = name
+            list.addToItems(item)
+        }
+
+        try container.viewContext.save()
+        return list
     }
     
-    func namesInTable() -> [String] {
-        let view = StubListsTableView()
+    func namesInTable(subject: ItemsDataSource) -> [String] {
+        let view = StubItemsTableView()
         let n = subject.tableView(view, numberOfRowsInSection: 0)
         return (0..<n).map { (i: Int) -> String in
             let cell = subject.tableView(view, cellForRowAt: IndexPath(row: i, section: 0))
             return cell.textLabel!.text!
         }
     }
-    
-    func testProvidesListsInAlphaOrder() {
-        addList(name: "foo")
-        addList(name: "bar")
-        subject.fetch()
-        XCTAssertEqual(namesInTable(), ["bar", "foo"])
-    }
- 
-    func testAddsListsInAlphaOrder() {
-        addList(name: "b")
-        subject.fetch()
-        subject.add(name: "c")
-        subject.add(name: "a")
-        XCTAssertEqual(namesInTable(), ["a", "b", "c"])
-    }
-
 }
