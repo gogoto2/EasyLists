@@ -57,9 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Failed to reset state: \(error)")
             print("This will most likely cause tests to fail.")
         }
-        
-        addList(name: "List B", container: container)
-        addList(name: "List A", container: container)
     }
     
     func addList(name: String, container: NSPersistentContainer) {
