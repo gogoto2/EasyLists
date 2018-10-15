@@ -20,7 +20,7 @@ class ListsDataSourceTests: XCTestCase {
             precondition(error == nil)
         }
         
-        subject = ListsDataSource(persistentContainer: container)
+        subject = ListsDataSource(viewContext: container.viewContext)
     }
     
     func addList(name: String) -> TodoList {

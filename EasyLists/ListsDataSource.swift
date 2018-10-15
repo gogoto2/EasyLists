@@ -3,34 +3,34 @@ import CoreData
 
 class ListsDataSource: NSObject, UITableViewDataSource {
     
-    private let persistentContainer: NSPersistentContainer
+    private let viewContext: NSManagedObjectContext
     private var lists: [TodoList] = []
     
-    init(persistentContainer: NSPersistentContainer) {
-        self.persistentContainer = persistentContainer
+    init(viewContext: NSManagedObjectContext) {
+        self.viewContext = viewContext
     }
     
     func fetch() throws {
         let req = NSFetchRequest<NSFetchRequestResult>(entityName: "TodoList")
         req.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        self.lists = try persistentContainer.viewContext.fetch(req) as! [TodoList]
+        self.lists = try viewContext.fetch(req) as! [TodoList]
     }
     
     func add(name: String) throws {
         let entity = NSEntityDescription.entity(forEntityName: "TodoList",
-                                                in: persistentContainer.viewContext)!
-        let list = TodoList(entity: entity, insertInto: persistentContainer.viewContext)
+                                                in: viewContext)!
+        let list = TodoList(entity: entity, insertInto: viewContext)
         list.name = name
         
-        try persistentContainer.viewContext.save()
+        try viewContext.save()
         lists.append(list)
         lists.sort(by: {$0.name! < $1.name!})
     }
     
     func deleteItemAtIndex(_ i: Int) throws {
         let list = lists.remove(at: i)
-        persistentContainer.viewContext.delete(list)
-        try persistentContainer.viewContext.save()
+        viewContext.delete(list)
+        try viewContext.save()
     }
     
     // MARK: - UITableViewDataSource methods

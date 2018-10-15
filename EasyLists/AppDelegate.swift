@@ -10,9 +10,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navController = window?.rootViewController as! UINavigationController
         let listsController = navController.viewControllers[0] as! ListsViewController
-        listsController.dataSource = ListsDataSource(persistentContainer: self.persistentContainer)
+        listsController.dataSource = ListsDataSource(viewContext: self.persistentContainer.viewContext)
         listsController.makeItemsDataSource = { (list: TodoList) in
-            ItemsDataSource(list: list, persistentContainer: self.persistentContainer)
+            ItemsDataSource(list: list, viewContext: self.persistentContainer.viewContext)
         }
 
         return true

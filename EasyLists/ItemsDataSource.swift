@@ -8,9 +8,9 @@ class ItemsDataSource: NSObject, UITableViewDataSource, ItemCellDelegate {
     var itemsInitiallyNotCompleted: [TodoListItem] = []
     var itemsInitiallyCompleted: [TodoListItem] = []
 
-    init(list: TodoList, persistentContainer: NSPersistentContainer) {
+    init(list: TodoList, viewContext: NSManagedObjectContext) {
         self.list = list
-        self.viewContext = persistentContainer.viewContext
+        self.viewContext = viewContext
         
         // Show completed items first, but otherwise preserve order.
         // Items won't be reordered once initially shown.
