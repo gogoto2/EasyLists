@@ -32,6 +32,15 @@ class ListsViewController: UITableViewController {
         }
     }
     
+    func deleteItemAtIndex(_ i: Int) {
+        do {
+            try dataSource!.deleteItemAtIndex(i)
+            tableView?.reloadData()
+        } catch {
+            print("Error deleting list: \(error)")
+        }
+    }
+    
     @IBAction func showAddDialog(_ sender: Any) {
         let alert = UIAlertController(title: "New List",
                                       message: nil,
@@ -55,6 +64,19 @@ class ListsViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         present(alert, animated: true)
+    }
+
+    // MARK: - UITableViewDelegate methods
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let title = NSLocalizedString("Delete", comment: "Delete action")
+        let action = UITableViewRowAction(style: .destructive,
+                                          title: title) { (action, indexPath) in
+                                            self.deleteItemAtIndex(indexPath.row)
+        }
+        
+        return [action]
     }
 
 }

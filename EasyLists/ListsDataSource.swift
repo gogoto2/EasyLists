@@ -27,6 +27,12 @@ class ListsDataSource: NSObject, UITableViewDataSource {
         lists.sort(by: {$0.name! < $1.name!})
     }
     
+    func deleteItemAtIndex(_ i: Int) throws {
+        let list = lists.remove(at: i)
+        persistentContainer.viewContext.delete(list)
+        try persistentContainer.viewContext.save()
+    }
+    
     // MARK: - UITableViewDataSource methods
     
     func numberOfSections(in tableView: UITableView) -> Int {

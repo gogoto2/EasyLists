@@ -47,14 +47,18 @@ class EasyListsUITests: XCTestCase {
         item3Cell.swipeLeft()
         item3Cell.buttons["Delete"].tap()
         XCTAssertEqual(2, itemsTable.cells.count)
+        
+        app.buttons["Easy Lists"].tap()
+        let listBCell = listsTable.cells.element(boundBy: 1)
+        listBCell.swipeLeft()
+        listBCell.buttons["Delete"].tap()
 
         // Verify that the additions were persisted
         app = launchApp(resetData: false)
         listsTable = app.tables["Lists"]
         XCTAssertTrue(listsTable.exists)
-        XCTAssertEqual(2, listsTable.cells.count)
+        XCTAssertEqual(1, listsTable.cells.count)
         XCTAssertTrue(listsTable.cells.element(boundBy: 0).descendants(matching: .staticText)["List A"].exists)
-        XCTAssertTrue(listsTable.cells.element(boundBy: 1).descendants(matching: .staticText)["List B"].exists)
         listsTable.cells.element(boundBy: 0).tap()
 
         itemsTable = app.tables["List A Items"]
